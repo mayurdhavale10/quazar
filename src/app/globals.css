@@ -1,0 +1,94 @@
+/* src/app/globals.css */
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   Design tokens (inline)
+   ========================= */
+
+/* Default = dark (NatGeo navy + yellow) */
+:root {
+  /* brand */
+  --brand-yellow: #ffd700;
+  --brand-yellow-2: #ffcc00;
+
+  /* surfaces */
+  --surface: #0d1b2a;   /* deep navy */
+  --surface-2: #14213d; /* charcoal */
+
+  /* text */
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+
+  /* accents */
+  --accent-warm: #fca311;
+  --accent-cool: #00e5ff;
+
+  --radius: 16px;
+  --ring: var(--brand-yellow);
+
+  /* fonts */
+  --heading-font: "Playfair Display", Georgia, "Times New Roman", serif;
+  --body-font: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  color-scheme: dark;
+}
+
+/* System light mode: white + yellow */
+@media (prefers-color-scheme: light) {
+  :root {
+    --brand-yellow: #ffd700;
+    --brand-yellow-2: #ffcc00;
+
+    --surface: #ffffff;
+    --surface-2: #f6f7f9;
+
+    --text-primary: #0d1b2a;
+    --text-secondary: #334155;
+
+    --accent-warm: #e67e22;
+    --accent-cool: #0ea5e9;
+
+    --ring: var(--brand-yellow);
+    color-scheme: light;
+  }
+}
+
+/* =========================
+   Minimal base styles
+   ========================= */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--body-font);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* =========================
+   Small semantic utilities used in components
+   ========================= */
+.u-text-secondary { color: var(--text-secondary); }
+.u-card { background: var(--surface-2); border: 1px solid color-mix(in srgb, var(--brand-yellow) 20%, transparent); border-radius: var(--radius); }
+.u-frame { border: 4px solid var(--brand-yellow); border-radius: var(--radius); }
+
+/* Optional tiny fade-up helper (used earlier) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-fadeUp { animation: fadeUp 700ms ease-out both; }
